@@ -20,6 +20,15 @@ import { SubjectComponent } from './subject/subject.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { FooterComponent } from './footer/footer.component';
 import { FacultyComponent } from './faculty/faculty.component';
+import { RoleListComponent } from './role/role-list.component';
+import { UserListComponent } from './user/user-list.component';
+import { CollegeListComponent } from './college/college-list.component';
+import { StudentListComponent } from './student/student-list.component';
+import { MarksheetListComponent } from './marksheet/marksheet-list.component';
+import { CourseListComponent } from './course/course-list.component';
+import { SubjectListComponent } from './subject/subject-list.component';
+import { TimetableListComponent } from './timetable/timetable-list.component';
+import { FacultyListComponent } from './faculty/faculty-list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +45,15 @@ import { FacultyComponent } from './faculty/faculty.component';
     TimetableComponent,
     FooterComponent,
     FacultyComponent,
+    RoleListComponent,
+    UserListComponent,
+    CollegeListComponent,
+    StudentListComponent,
+    MarksheetListComponent,
+    CourseListComponent,
+    SubjectListComponent,
+    TimetableListComponent,
+    FacultyListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
 

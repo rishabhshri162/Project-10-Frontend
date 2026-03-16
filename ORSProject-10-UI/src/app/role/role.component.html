@@ -1,5 +1,5 @@
 <div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Role</h1>
+    <h1 *ngIf="form.data.id == null" align="center" style="margin-bottom: 5px; color: navy">Add Role</h1>
     <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Role</h1>
 
     <div style="height: 20px; margin-bottom: 10px; text-align: center;">
