@@ -35,11 +35,19 @@ const routes: Routes = [
     component: RoleComponent,
   },
   {
+    path: 'role/:id',
+    component: RoleComponent,
+  },
+  {
     path: 'rolelist',
     component: RoleListComponent,
   },
   {
     path: 'user',
+    component: UserComponent,
+  },
+  {
+    path: 'user/:id',
     component: UserComponent,
   },
 
@@ -51,58 +59,86 @@ const routes: Routes = [
     path: 'college',
     component: CollegeComponent,
   },
+  {
+    path: 'college/:id',
+    component: CollegeComponent,
+  },
 
-   {
+  {
     path: 'collegelist',
-    component: CollegeListComponent
+    component: CollegeListComponent,
   },
   {
     path: 'student',
     component: StudentComponent,
   },
-   {
+  {
+    path: 'student/:id',
+    component: StudentComponent,
+  },
+  {
     path: 'studentlist',
-    component: StudentListComponent
+    component: StudentListComponent,
   },
   {
     path: 'marksheet',
     component: MarksheetComponent,
   },
   {
+    path: 'marksheet/:id',
+    component: MarksheetComponent,
+  },
+  {
     path: 'marksheetlist',
-    component: MarksheetListComponent
+    component: MarksheetListComponent,
   },
   {
     path: 'course',
     component: CourseComponent,
   },
-   {
+  {
+    path: 'course/:id',
+    component: CourseComponent,
+  },
+  {
     path: 'courselist',
-    component: CourseListComponent
+    component: CourseListComponent,
   },
   {
     path: 'subject',
     component: SubjectComponent,
   },
-   {
+  {
+    path: 'subject/:id',
+    component: SubjectComponent,
+  },
+  {
     path: 'subjectlist',
-    component: SubjectListComponent
+    component: SubjectListComponent,
   },
   {
     path: 'timetable',
     component: TimetableComponent,
   },
   {
+    path: 'timetable/:id',
+    component: TimetableComponent,
+  },
+  {
     path: 'timetablelist',
-    component: TimetableListComponent
+    component: TimetableListComponent,
   },
   {
     path: 'faculty',
     component: FacultyComponent,
   },
-   {
+  {
+    path: 'faculty/:id',
+    component: FacultyComponent,
+  },
+  {
     path: 'facultylist',
-    component: FacultyListComponent
+    component: FacultyListComponent,
   },
 ];
 

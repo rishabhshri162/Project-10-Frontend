@@ -10,7 +10,8 @@
     <table>
         <tr>
             <th align="left">Name<span style="color: red">*</span></th>
-            <td align="center"><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter Course Name"></td>
+            <td align="center"><input type="text" name="name" [(ngModel)]="form.data.name"
+                    placeholder="Enter Course Name"></td>
             <td style="position: fixed; color: red;">{{form.inputerror.name}}</td>
         </tr>
 
@@ -28,12 +29,8 @@
         <tr>
             <th align="left">Description<span style="color: red">*</span></th>
             <td align="center">
-                <textarea 
-                    style="width: 165px; resize: none;" 
-                    name="description" 
-                    [(ngModel)]="form.data.description"
-                    rows="3" 
-                    placeholder="Enter Short description">
+                <textarea style="width: 165px; resize: none;" name="description" [(ngModel)]="form.data.description"
+                    rows="3" placeholder="Enter Short description">
                 </textarea>
             </td>
             <td style="position: fixed; color: red;">{{form.inputerror.description}}</td>
@@ -44,10 +41,13 @@
         <tr>
             <th></th>
             <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-           <button (click)="reset()">Reset</button> &nbsp;
+                <button *ngIf="!form.data.id" (click)="submit()">Save</button>
+                <button *ngIf="form.data.id" (click)="submit()">Update</button> &nbsp;
+
+
+                <button *ngIf="!form.data.id" (click)="reset()">Reset</button> &nbsp;
+                <button *ngIf="form.data.id" (click)="forward('/subjectlist')">list</button> &nbsp;
             </td>
         </tr>
     </table>
 </div>
-
