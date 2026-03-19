@@ -20,6 +20,8 @@ import { SubjectListComponent } from './subject/subject-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
 import { SignupComponent } from './login/signup.component';
+import { LoginComponent } from './login/login.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotpasswordComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'role',
@@ -141,9 +151,9 @@ const routes: Routes = [
     path: 'facultylist',
     component: FacultyListComponent,
   },
- {
+  {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
   },
 ];
 
