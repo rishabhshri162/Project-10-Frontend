@@ -19,6 +19,7 @@ import { CourseListComponent } from './course/course-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
+import { SignupComponent } from './login/signup.component';
 
 const routes: Routes = [
   {
@@ -139,6 +140,10 @@ const routes: Routes = [
   {
     path: 'facultylist',
     component: FacultyListComponent,
+  },
+ {
+    path: 'signup',
+    component: SignupComponent
   },
 ];
 

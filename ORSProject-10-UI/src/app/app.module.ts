@@ -29,6 +29,9 @@ import { CourseListComponent } from './course/course-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './login/signup.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
     SubjectListComponent,
     TimetableListComponent,
     FacultyListComponent,
+    LoginComponent,
+    SignupComponent,
+    ForgotpasswordComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
 
