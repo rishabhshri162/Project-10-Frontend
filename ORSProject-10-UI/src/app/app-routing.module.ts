@@ -22,6 +22,8 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
 import { SignupComponent } from './login/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
+import { MyprofileComponent } from './user/myprofile.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'changepassword',
+    component: ChangepasswordComponent,
+
   },
   {
     path: 'forgotpassword',
@@ -65,6 +72,14 @@ const routes: Routes = [
   {
     path: 'userlist',
     component: UserListComponent,
+  },
+    {
+    path: 'myprofile',
+    component: MyprofileComponent
+  },
+  {
+    path: 'myprofile/:id',
+    component: MyprofileComponent
   },
   {
     path: 'college',

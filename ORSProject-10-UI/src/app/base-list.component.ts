@@ -42,9 +42,7 @@ export class BaseListCtl extends BaseCtl {
   }
 
   checklistUpdate() {
-    const totalChecked = this.checkboxes.filter(
-      (cb) => cb.nativeElement.checked,
-    ).length;
+    const totalChecked = this.checkboxes.filter((cb) => cb.nativeElement.checked,).length;
     this.isMasterSel = totalChecked === this.form.list.length;
   }
 
