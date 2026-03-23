@@ -17,24 +17,27 @@ export class LoginComponent {
   };
 
   constructor(
-    private httpService: HttpServiceService,
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {}
+    private httpService: HttpServiceService,private router: Router, private route: ActivatedRoute) {
 
+    }
+
+    
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
+    this.route.queryParams.subscribe(params => {
+
       if (params['message']) {
         this.form.message = params['message'];
-        this.form.error = false;
+        this.form.error = false;  
       }
 
       if (params['errorMessage']) {
         this.form.message = params['errorMessage'];
-        this.form.error = true;
+        this.form.error = true;    
       }
+
     });
   }
+
 
   signIn() {
     var _self = this;
