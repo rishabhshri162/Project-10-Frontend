@@ -1,0 +1,97 @@
+<div class="container-fluid" style="background-image: url('assets/img/wall.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     min-height: 100vh;
+     padding-top: 85px;">
+
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-lg">
+                <div class="card-body">
+
+                    <!-- TITLE -->
+                    <h3 class="text-center text-primary font-weight-bold" *ngIf="form.data.id == null">
+                        Add Role
+                    </h3>
+
+                    <h3 class="text-center text-primary font-weight-bold" *ngIf="form.data.id>0">
+                        Update Role
+                    </h3>
+
+                    <!-- SUCCESS -->
+                    <div *ngIf="form.error == false && form.message"
+                        class="alert alert-success alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- ERROR -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- NAME -->
+                    <label><b>Name *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="form.data.name" name="name"
+                            placeholder="Enter Role Name">
+                    </div>
+                    <div>
+                        <span class="text-danger">{{form.inputerror.name}}</span>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <label><b>Description *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-list"></i>
+                            </span>
+                        </div>
+                        <textarea class="form-control" [(ngModel)]="form.data.description" name="description" rows="2"
+                            placeholder="Enter Short description">
+    </textarea>
+                    </div>
+                    <div>
+                        <span class="text-danger">{{form.inputerror.description}}</span>
+                    </div>
+
+                    <!-- BUTTONS -->
+                    <div class="text-center mt-4">
+
+                        <button *ngIf="!form.data.id" (click)="submit()" class="btn btn-success btn-md mr-2">
+                            Save
+                        </button>
+
+                        <button *ngIf="form.data.id" (click)="submit()" class="btn btn-success btn-md mr-2">
+                            Update
+                        </button>
+
+                        <button *ngIf="!form.data.id" (click)="reset()" class="btn btn-warning btn-md mr-2">
+                            Reset
+                        </button>
+
+                        <button *ngIf="form.data.id" (click)="forward('/rolelist')" class="btn btn-warning btn-md">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

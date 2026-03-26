@@ -1,0 +1,114 @@
+<style>
+    /* 🔥 Background same JSP jaisa */
+    .login-bg {
+        background: url('assets/img/sign.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+
+        min-height: calc(100vh - 120px);
+    }
+
+    /* Center align */
+    .login-row {
+        min-height: calc(100vh - 120px);
+    }
+
+    /* Card gradient */
+    .grad {
+        background-image: linear-gradient(to bottom right, white, #d3d3d3);
+    }
+
+    /* Input shadow (same JSP effect) */
+    .input-group-text {
+        background-color: #ebebe0;
+        border: 1px solid #ccc;
+    }
+
+    /* Optional shadow like JSP */
+    .card {
+        box-shadow: 9px 8px 7px #001a33;
+    }
+</style>
+
+<div class="container-fluid login-bg">
+
+    <div class="row justify-content-center align-items-center login-row">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-lg grad">
+
+                <div class="card-body">
+
+                    <!-- Title -->
+                    <h3 class="text-center text-dark"><b>{{ 'Login' | translate }}</b></h3>
+
+                    <!-- Messages -->
+                    <div *ngIf="form.message" class="alert alert-dismissible fade show" [ngClass]="{
+       'alert-success': !form.error,
+       'alert-danger': form.error
+     }" style="text-align: center;">
+
+                        {{ form.message }}
+
+                        <!-- ❌ Close button (Bootstrap 4 style) -->
+                        <button type="button" class="close" (click)="closeMessage()">
+                            <span>&times;</span>
+                        </button>
+
+                    </div>
+                    <!-- Email -->
+                    <label><b>{{ 'LoginId' | translate }}</b> <span style="color:red">*</span></label>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-text">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="form.data.loginId"
+                            placeholder="Enter email">
+                    </div>
+
+                    <div class="text-danger small">{{form.inputerror.loginId}}</div>
+
+                    <!-- Password -->
+                    <label class="mt-2"><b>{{ 'Password' | translate }}</b> <span style="color:red">*</span></label>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-text">
+                            <i class="fa fa-lock"></i>
+                        </div>
+                        <input type="password" class="form-control" [(ngModel)]="form.data.password"
+                            placeholder="Enter password">
+                    </div>
+
+                    <div class="text-danger small">{{form.inputerror.password}}</div>
+
+                    <!-- Buttons -->
+                    <div class="text-center mt-3">
+
+                        <button class="btn btn-success me-2" (click)="signIn()">
+                            {{ 'Sign In' | translate }}
+                        </button>
+
+                        <button class="btn btn-primary" (click)="signUp()">
+                            {{ 'Sign Up' | translate }}
+                        </button>
+
+                    </div>
+
+                    <!-- Forgot -->
+                    <div class="text-center mt-2">
+                        <a [routerLink]="['/forgotpassword']">
+                            <b><u>{{ 'Forget my password?' | translate }}</u></b>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

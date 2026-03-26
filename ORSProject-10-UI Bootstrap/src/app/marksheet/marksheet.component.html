@@ -1,0 +1,135 @@
+<div class="container-fluid" style="background-image: url('assets/img/image1.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     min-height: 100vh;
+     padding-top: 75px;
+ padding-bottom: 75px;">
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-lg">
+                <div class="card-body">
+
+                    <!-- TITLE -->
+                    <h3 class="text-center text-primary font-weight-bold" *ngIf="!form.data.id">
+                        Add Marksheet
+                    </h3>
+
+                    <h3 class="text-center text-primary font-weight-bold" *ngIf="form.data.id>0">
+                        Update Marksheet
+                    </h3>
+
+                    <!-- SUCCESS -->
+                    <div *ngIf="form.error == false && form.message"
+                        class="alert alert-success alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- ERROR -->
+                    <div *ngIf="form.error && form.message" class="alert alert-danger alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- ROLL NO -->
+                    <label><b>Roll No *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-list-ol"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="rollNo" [(ngModel)]="form.data.rollNo"
+                            maxlength="5" placeholder="Enter Roll No">
+                    </div>
+                    <div class="text-danger">{{form.inputerror.rollNo}}</div>
+
+                    <!-- STUDENT -->
+                    <label><b>Student Name *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <select class="form-control" name="studentId" [(ngModel)]="form.data.studentId">
+                            <option value="undefined">------------Select------------</option>
+                            <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">
+                                {{obj.value}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.studentId}}</div>
+
+                    <!-- PHYSICS -->
+                    <label><b>Physics *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-equals"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="physics" [(ngModel)]="form.data.physics"
+                            maxlength="3" placeholder="Enter Physics Marks">
+                    </div>
+                    <div class="text-danger">{{form.inputerror.physics}}</div>
+
+                    <!-- CHEMISTRY -->
+                    <label><b>Chemistry *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-equals"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="chemistry" [(ngModel)]="form.data.chemistry"
+                            maxlength="3" placeholder="Enter Chemistry Marks">
+                    </div>
+                    <div class="text-danger">{{form.inputerror.chemistry}}</div>
+
+                    <!-- MATHS -->
+                    <label><b>Maths *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-equals"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="maths" [(ngModel)]="form.data.maths" maxlength="3"
+                            placeholder="Enter Maths Marks">
+                    </div>
+                    <div class="text-danger">{{form.inputerror.maths}}</div>
+
+                    <!-- BUTTONS -->
+                    <div class="text-center mt-4">
+
+                        <button *ngIf="!form.data.id" (click)="submit()" class="btn btn-success mr-2">
+                            Save
+                        </button>
+
+                        <button *ngIf="form.data.id" (click)="submit()" class="btn btn-success mr-2">
+                            Update
+                        </button>
+
+                        <button *ngIf="!form.data.id" (click)="reset()" class="btn btn-warning mr-2">
+                            Reset
+                        </button>
+
+                        <button *ngIf="form.data.id" (click)="forward('/marksheetlist')" class="btn btn-warning">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

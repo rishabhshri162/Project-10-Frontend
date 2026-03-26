@@ -1,0 +1,104 @@
+{
+  "Login": "Anmeldung",
+  "Sign In": "Anmelden",
+  "Sign Up": "Registrieren",
+  "Forget my password?": "Passwort vergessen?",
+  "Login Id": "Benutzer-ID",
+  "UserRegistration": "Benutzerregistrierung",
+  "FirstName": "Vorname",
+  "LastName": "Nachname",
+  "LoginId": "Benutzer-ID",
+  "Password": "Passwort",
+  "DateOfBirth": "Geburtsdatum",
+  "Gender": "Geschlecht",
+  "Mobile": "Handy",
+
+  "Buttons": {
+    "SignUp": "Registrieren",
+    "SignIn": "Anmelden",
+    "Reset": "Zurücksetzen"
+  },
+
+  "GenderOptions": {
+    "Select": "------------Auswählen------------",
+    "Male": "Männlich",
+    "Female": "Weiblich"
+  },
+
+  "Greetings": {
+    "HiUser": "Hallo, {{name}} ( {{role}} )",
+    "HiGuest": "Hallo, Gast"
+  },
+
+  "Links": {
+    "MyProfile": "Mein Profil",
+    "ChangePassword": "Passwort ändern",
+    "AddUser": "Benutzer hinzufügen",
+    "UserList": "Benutzerliste",
+    "AddRole": "Rolle hinzufügen",
+    "RoleList": "Rollenliste",
+    "AddCollege": "College hinzufügen",
+    "CollegeList": "College-Liste",
+    "AddStudent": "Student hinzufügen",
+    "StudentList": "Studentenliste",
+    "AddMarksheet": "Notenblatt hinzufügen",
+    "MarksheetList": "Notenblattliste",
+    "AddCourse": "Kurs hinzufügen",
+    "CourseList": "Kursliste",
+    "AddSubject": "Fach hinzufügen",
+    "SubjectList": "Fächerliste",
+    "AddTimetable": "Stundenplan hinzufügen",
+    "TimetableList": "Stundenplanliste",
+    "AddFaculty": "Fakultät hinzufügen",
+    "FacultyList": "Fakultätsliste",
+    "Logout": "Abmelden",
+    "Dashboard": "Dashboard",
+    "Login": "Anmeldung"
+  },
+
+  "LocaleSelect": {
+    "Select": "-------Auswählen-------",
+    "English": "Englisch",
+    "Hindi": "Hindi",
+    "French": "Französisch",
+    "German": "Deutsch"
+  },
+
+  "UserForm": {
+    "AddUser": "Benutzer hinzufügen",
+    "UpdateUser": "Benutzer aktualisieren",
+    "FirstName": "Vorname",
+    "LastName": "Nachname",
+    "LoginId": "Benutzer-ID",
+    "Password": "Passwort",
+    "DateOfBirth": "Geburtsdatum",
+    "Gender": "Geschlecht",
+    "Role": "Rolle",
+    "Mobile": "Handy",
+    "AlternateMobile": "Alternatives Handy",
+    "Status": "Status",
+
+    "Placeholders": {
+      "FirstName": "Vorname eingeben",
+      "LastName": "Nachname eingeben",
+      "LoginId": "Benutzer-ID eingeben",
+      "Password": "Passwort eingeben",
+      "DateOfBirth": "Geburtsdatum auswählen",
+      "Mobile": "Handynummer eingeben",
+      "AlternateMobile": "Alternative Handynummer eingeben"
+    },
+
+    "SelectOptions": {
+      "Select": "------------Auswählen------------",
+      "Male": "Männlich",
+      "Female": "Weiblich",
+      "Active": "Aktiv",
+      "Inactive": "Inaktiv"
+    },
+
+    "Buttons": {
+      "Save": "Speichern",
+      "List": "Liste"
+    }
+  }
+}

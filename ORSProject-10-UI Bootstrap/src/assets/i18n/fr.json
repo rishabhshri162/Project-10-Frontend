@@ -1,0 +1,104 @@
+{
+    "Login": "Connexion",
+    "Sign In": "Se connecter",
+    "Sign Up": "S'inscrire",
+    "Forget my password?": "Mot de passe oublié ?",
+    "Login Id": "Identifiant",
+    "UserRegistration": "Inscription utilisateur",
+    "FirstName": "Prénom",
+    "LastName": "Nom",
+    "LoginId": "Identifiant",
+    "Password": "Mot de passe",
+    "DateOfBirth": "Date de naissance",
+    "Gender": "Genre",
+    "Mobile": "Mobile",
+
+    "Buttons": {
+        "SignUp": "S'inscrire",
+        "SignIn": "Se connecter",
+        "Reset": "Réinitialiser"
+    },
+
+    "GenderOptions": {
+        "Select": "------------Sélectionner------------",
+        "Male": "Homme",
+        "Female": "Femme"
+    },
+
+    "Greetings": {
+        "HiUser": "Bonjour, {{name}} ( {{role}} )",
+        "HiGuest": "Bonjour, invité"
+    },
+
+    "Links": {
+        "MyProfile": "Mon profil",
+        "ChangePassword": "Changer le mot de passe",
+        "AddUser": "Ajouter un utilisateur",
+        "UserList": "Liste des utilisateurs",
+        "AddRole": "Ajouter un rôle",
+        "RoleList": "Liste des rôles",
+        "AddCollege": "Ajouter un collège",
+        "CollegeList": "Liste des collèges",
+        "AddStudent": "Ajouter un étudiant",
+        "StudentList": "Liste des étudiants",
+        "AddMarksheet": "Ajouter une feuille de notes",
+        "MarksheetList": "Liste des feuilles de notes",
+        "AddCourse": "Ajouter un cours",
+        "CourseList": "Liste des cours",
+        "AddSubject": "Ajouter une matière",
+        "SubjectList": "Liste des matières",
+        "AddTimetable": "Ajouter un emploi du temps",
+        "TimetableList": "Liste des emplois du temps",
+        "AddFaculty": "Ajouter un professeur",
+        "FacultyList": "Liste des professeurs",
+        "Logout": "Déconnexion",
+        "Dashboard": "Tableau de bord",
+        "Login": "Connexion"
+    },
+
+    "LocaleSelect": {
+        "Select": "-------Sélectionner-------",
+        "English": "Anglais",
+        "Hindi": "Hindi",
+        "French": "Français",
+        "German": "Allemand"    
+    },
+
+    "UserForm": {
+        "AddUser": "Ajouter un utilisateur",
+        "UpdateUser": "Mettre à jour l'utilisateur",
+        "FirstName": "Prénom",
+        "LastName": "Nom",
+        "LoginId": "Identifiant",
+        "Password": "Mot de passe",
+        "DateOfBirth": "Date de naissance",
+        "Gender": "Genre",
+        "Role": "Rôle",
+        "Mobile": "Mobile",
+        "AlternateMobile": "Mobile alternatif",
+        "Status": "Statut",
+
+        "Placeholders": {
+            "FirstName": "Entrez le prénom",
+            "LastName": "Entrez le nom",
+            "LoginId": "Entrez l'identifiant",
+            "Password": "Entrez le mot de passe",
+            "DateOfBirth": "Sélectionnez la date de naissance",
+            "Mobile": "Entrez le numéro de mobile",
+            "AlternateMobile": "Entrez le mobile alternatif"
+        },
+
+        "SelectOptions": {
+            "Select": "------------Sélectionner------------",
+            "Male": "Homme",
+            "Female": "Femme",
+            "Active": "Actif",
+            "Inactive": "Inactif"
+        },
+
+        "Buttons": {
+            "Save": "Enregistrer",
+            "List": "Liste"
+        }
+    }
+}

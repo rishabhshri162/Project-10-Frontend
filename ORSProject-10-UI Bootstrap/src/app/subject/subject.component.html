@@ -1,0 +1,131 @@
+<div class="container-fluid"
+     style="background-image: url('assets/img/user1.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     min-height: 100vh;
+     padding-top: 75px;">
+
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-lg">
+                <div class="card-body">
+
+                    <!-- TITLE -->
+                    <h3 class="text-center text-primary font-weight-bold"
+                        *ngIf="!form.data.id">
+                        Add Subject
+                    </h3>
+
+                    <h3 class="text-center text-primary font-weight-bold"
+                        *ngIf="form.data.id>0">
+                        Update Subject
+                    </h3>
+
+                    <!-- SUCCESS -->
+                    <div *ngIf="form.error == false && form.message"
+                         class="alert alert-success alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- ERROR -->
+                    <div *ngIf="form.error && form.message"
+                         class="alert alert-danger alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- NAME -->
+                    <label><b>Subject Name *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-book"></i>
+                            </span>
+                        </div>
+                        <input type="text"
+                               class="form-control"
+                               name="name"
+                               [(ngModel)]="form.data.name"
+                               placeholder="Enter Subject Name">
+                    </div>
+                    <div class="text-danger">{{form.inputerror.name}}</div>
+
+                    <!-- DESCRIPTION -->
+                    <label><b>Description *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-list"></i>
+                            </span>
+                        </div>
+                        <textarea class="form-control"
+                                  name="description"
+                                  [(ngModel)]="form.data.description"
+                                  rows="3"
+                                  placeholder="Enter Short description">
+                        </textarea>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.description}}</div>
+
+                    <!-- COURSE -->
+                    <label><b>Course *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user-alt"></i>
+                            </span>
+                        </div>
+                        <select class="form-control"
+                                name="courseId"
+                                [(ngModel)]="form.data.courseId">
+                            <option value="undefined">------------Select------------</option>
+                            <option *ngFor="let obj of form.preload.courseList"
+                                    [value]="obj.key">
+                                {{obj.value}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.courseId}}</div>
+
+                    <!-- BUTTONS -->
+                    <div class="text-center mt-4">
+
+                        <button *ngIf="!form.data.id"
+                                (click)="submit()"
+                                class="btn btn-success mr-2">
+                            Save
+                        </button>
+
+                        <button *ngIf="form.data.id"
+                                (click)="submit()"
+                                class="btn btn-success mr-2">
+                            Update
+                        </button>
+
+                        <button *ngIf="!form.data.id"
+                                (click)="reset()"
+                                class="btn btn-warning mr-2">
+                            Reset
+                        </button>
+
+                        <button *ngIf="form.data.id"
+                                (click)="forward('/subjectlist')"
+                                class="btn btn-warning">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

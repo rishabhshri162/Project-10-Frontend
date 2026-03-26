@@ -1,0 +1,194 @@
+<div class="container-fluid"
+     style="background-image: url('assets/img/user1.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     min-height: 100vh;
+     padding-top: 75px;">
+
+    <div class="row">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-lg">
+                <div class="card-body">
+
+                    <!-- TITLE -->
+                    <h3 class="text-center text-primary font-weight-bold"
+                        *ngIf="!form.data.id">
+                        Add Timetable
+                    </h3>
+
+                    <h3 class="text-center text-primary font-weight-bold"
+                        *ngIf="form.data.id>0">
+                        Update Timetable
+                    </h3>
+
+                    <!-- SUCCESS -->
+                    <div *ngIf="form.error == false && form.message"
+                         class="alert alert-success alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- ERROR -->
+                    <div *ngIf="form.error && form.message"
+                         class="alert alert-danger alert-dismissible text-center">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ form.message }}
+                    </div>
+
+                    <!-- COURSE -->
+                    <label><b>Course *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-book"></i>
+                            </span>
+                        </div>
+                        <select class="form-control"
+                                name="courseId"
+                                [(ngModel)]="form.data.courseId">
+                            <option value="undefined">------------Select------------</option>
+                            <option *ngFor="let obj of form.preload.courseList"
+                                    [value]="obj.key">
+                                {{obj.value}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.courseId}}</div>
+
+                    <!-- SUBJECT -->
+                    <label><b>Subject *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-book-open"></i>
+                            </span>
+                        </div>
+                        <select class="form-control"
+                                name="subjectId"
+                                [(ngModel)]="form.data.subjectId">
+                            <option value="undefined">------------Select------------</option>
+                            <option *ngFor="let obj of form.preload.subjectList"
+                                    [value]="obj.key">
+                                {{obj.value}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.subjectId}}</div>
+
+                    <!-- SEMESTER -->
+                    <label><b>Semester *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-sort"></i>
+                            </span>
+                        </div>
+                        <select class="form-control"
+                                name="semester"
+                                [(ngModel)]="form.data.semester">
+                            <option value="undefined">------------Select------------</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.semester}}</div>
+
+                    <!-- EXAM DATE -->
+                    <label><b>Exam Date *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                        <input type="date"
+                               class="form-control"
+                               name="examDate"
+                               [(ngModel)]="form.data.examDate"
+                               [ngModel]="form.data.examDate | date:'yyyy-MM-dd'">
+                    </div>
+                    <div class="text-danger">{{form.inputerror.examDate}}</div>
+
+                    <!-- EXAM TIME -->
+                    <label><b>Exam Time *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-clock"></i>
+                            </span>
+                        </div>
+                        <select class="form-control"
+                                name="examTime"
+                                [(ngModel)]="form.data.examTime">
+                            <option value="undefined">------------Select------------</option>
+                            <option value="08:00 AM to 11:00 AM">08:00 AM to 11:00 AM</option>
+                            <option value="12:00 PM to 03:00 PM">12:00 PM to 03:00 PM</option>
+                            <option value="04:00 PM to 07:00 PM">04:00 PM to 07:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.examTime}}</div>
+
+                    <!-- DESCRIPTION -->
+                    <label><b>Description *</b></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-list"></i>
+                            </span>
+                        </div>
+                        <textarea class="form-control"
+                                  name="description"
+                                  [(ngModel)]="form.data.description"
+                                  rows="3"
+                                  placeholder="Enter Short description">
+                        </textarea>
+                    </div>
+                    <div class="text-danger">{{form.inputerror.description}}</div>
+
+                    <!-- BUTTONS -->
+                    <div class="text-center mt-4">
+
+                        <button *ngIf="!form.data.id"
+                                (click)="submit()"
+                                class="btn btn-success mr-2">
+                            Save
+                        </button>
+
+                        <button *ngIf="form.data.id"
+                                (click)="submit()"
+                                class="btn btn-success mr-2">
+                            Update
+                        </button>
+
+                        <button *ngIf="!form.data.id"
+                                (click)="reset()"
+                                class="btn btn-warning mr-2">
+                            Reset
+                        </button>
+
+                        <button *ngIf="form.data.id"
+                                (click)="forward('/timetablelist')"
+                                class="btn btn-warning">
+                            List
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
