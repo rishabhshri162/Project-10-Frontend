@@ -40,6 +40,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ChangepasswordComponent } from './user/changepassword.component';
 import { MyprofileComponent } from './user/myprofile.component';
+import { MarksheetmeritlistComponent } from './marksheet/marksheetmeritlist.component';
+import { GetmarksheetComponent } from './marksheet/getmarksheet.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,6 +76,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ForgotpasswordComponent,
     ChangepasswordComponent,
     MyprofileComponent,
+    MarksheetmeritlistComponent,
+    GetmarksheetComponent,
   ],
   imports: [
     BrowserModule,

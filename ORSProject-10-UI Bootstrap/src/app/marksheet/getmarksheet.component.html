@@ -1,0 +1,153 @@
+<div class="container-fluid"
+     style="background: url('assets/img/img32.jpg') no-repeat center;
+     background-size: cover;
+     background-attachment: fixed;
+     min-height: 100vh;
+     padding-top: 100px;">
+
+    <!-- TITLE -->
+    <h1 class="text-center text-primary font-weight-bold mb-4">
+        Get Marksheet
+    </h1>
+
+    <!-- SEARCH -->
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+
+            <form (ngSubmit)="go()">
+
+                <input type="text"
+                       name="rollNo"
+                       class="form-control mb-3"
+                       [(ngModel)]="form.data.rollNo"
+                       placeholder="Enter Roll Number">
+
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-success mr-2">
+                        Search
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-primary"
+                            (click)="reset()">
+                        Reset
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4 text-center">
+
+            <div *ngIf="form.error" class="alert alert-danger">
+                {{form.message}}
+            </div>
+
+            <div *ngIf="!form.error && form.message" class="alert alert-success">
+                {{form.message}}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="container mt-4" *ngIf="form.list.rollNo">
+
+        <div class="card shadow">
+            <div class="card-body">
+
+                <table class="table table-bordered text-center">
+
+                    <tr>
+                        <th>Roll No</th>
+                        <td>{{form.list.rollNo}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Name</th>
+                        <td>{{form.list.name}}</td>
+                    </tr>
+
+                </table>
+
+                <table class="table table-bordered text-center">
+
+                    <tr>
+                        <th>Subject</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                        <th>Marks</th>
+                    </tr>
+
+                    <tr>
+                        <td>Physics</td>
+                        <td>100</td>
+                        <td>35</td>
+                        <td [ngStyle]="{'color': form.list.physics > 35 ? 'green':'red'}">
+                            {{form.list.physics}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Chemistry</td>
+                        <td>100</td>
+                        <td>35</td>
+                        <td [ngStyle]="{'color': form.list.chemistry > 35 ? 'green':'red'}">
+                            {{form.list.chemistry}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Maths</td>
+                        <td>100</td>
+                        <td>35</td>
+                        <td [ngStyle]="{'color': form.list.maths > 35 ? 'green':'red'}">
+                            {{form.list.maths}}
+                        </td>
+                    </tr>
+
+                </table>
+
+                <table class="table table-bordered text-center">
+
+                    <tr>
+                        <th>Total</th>
+                        <td>
+                            {{form.list.physics + form.list.chemistry + form.list.maths}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Percentage</th>
+                        <td>
+                            {{((form.list.physics + form.list.chemistry + form.list.maths)*100)/300 | number:'2.0-2'}}%
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Result</th>
+                        <td>
+                            <span *ngIf="((form.list.physics + form.list.chemistry + form.list.maths)*100)/300 > 35; else fail"
+                                  class="text-success">
+                                PASS
+                            </span>
+
+                            <ng-template #fail>
+                                <span class="text-danger">FAIL</span>
+                            </ng-template>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

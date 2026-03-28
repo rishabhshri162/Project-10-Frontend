@@ -1,5 +1,4 @@
-<div class="container-fluid"
-     style="background-image: url('assets/img/list.png');
+<div class="container-fluid" style="background-image: url('assets/img/list.png');
      background-size: cover;
      background-position: center;
      min-height: 100vh;
@@ -15,9 +14,8 @@
     <div class="row">
         <div class="col-md-4"></div>
 
-        <div class="col-md-4 alert alert-success alert-dismissible text-center"
-             *ngIf="!form.error && form.message"
-             style="background-color:#80ff80;">
+        <div class="col-md-4 alert alert-success alert-dismissible text-center" *ngIf="!form.error && form.message"
+            style="background-color:#80ff80;">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{form.message}}
         </div>
@@ -29,8 +27,7 @@
     <div class="row">
         <div class="col-md-4"></div>
 
-        <div class="col-md-4 alert alert-danger alert-dismissible text-center"
-             *ngIf="form.error && form.message">
+        <div class="col-md-4 alert alert-danger alert-dismissible text-center" *ngIf="form.error && form.message">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{form.message}}
         </div>
@@ -44,18 +41,14 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <input type="text"
-                   class="form-control"
-                   [(ngModel)]="form.searchParams.firstName"
-                   placeholder="Enter FirstName">
+            <input type="text" class="form-control" [(ngModel)]="form.searchParams.firstName"
+                placeholder="Enter FirstName">
         </div>
 
         <div class="col-sm-2">
-            <select class="form-control"
-                    [(ngModel)]="form.searchParams.roleId">
+            <select class="form-control" [(ngModel)]="form.searchParams.roleId">
                 <option [ngValue]="undefined">Select Role</option>
-                <option *ngFor="let obj of form.preload.roleList"
-                        [ngValue]="obj.key">
+                <option *ngFor="let obj of form.preload.roleList" [ngValue]="obj.key">
                     {{obj.value}}
                 </option>
             </select>
@@ -86,9 +79,7 @@
                 <tr style="background-color: #8C8C8C;">
 
                     <th>
-                        <input type="checkbox"
-                               [(ngModel)]="isMasterSel"
-                               (change)="checkUncheckAll($event)">
+                        <input type="checkbox" [(ngModel)]="isMasterSel" (change)="checkUncheckAll($event)">
                         Select All
                     </th>
 
@@ -110,25 +101,17 @@
                 <tr *ngFor="let m of form.list; let i = index">
 
                     <td>
-                        <input #checkboxes type="checkbox"
-                               (change)="checklistUpdate()"
-                               [id]="m.id"
-                               [value]="m.id">
+                        <input #checkboxes type="checkbox" (change)="checklistUpdate()" [id]="m.id" [value]="m.id">
                     </td>
 
                     <td>{{(form.pageNo*5)+i+1}}</td>
 
                     <!-- IMAGE -->
                     <td>
-                        <img *ngIf="m.imageId"
-                             [src]="'http://localhost:8080/User/profilePic/' + m.id"
-                             class="img-thumbnail"
-                             width="70">
+                        <img *ngIf="m.imageId" [src]="'http://localhost:8080/User/profilePic/' + m.id"
+                            class="img-thumbnail" width="70">
 
-                        <img *ngIf="!m.imageId"
-                             src="assets/files/default.jpg"
-                             class="img-thumbnail"
-                             width="70">
+                        <img *ngIf="!m.imageId" src="assets/files/default.jpg" class="img-thumbnail" width="70">
                     </td>
 
                     <td>{{m.firstName}}</td>
@@ -140,8 +123,7 @@
                     <td>{{m.dob | date:'dd-MM-yyyy'}}</td>
 
                     <td>
-                        <button class="btn btn-sm btn-primary"
-                                (click)="forward('/user/' + m.id)">
+                        <button class="btn btn-sm btn-primary" (click)="forward('/user/' + m.id)">
                             <i class="fa fa-edit"></i>
                         </button>
                     </td>
@@ -158,16 +140,14 @@
     <div class="row mt-3 align-items-center">
 
         <div class="col-md-4">
-            <button class="btn btn-warning btn-md"
-                    (click)="previous()"
-                    [disabled]="form.pageNo == 0">
+            <button class="btn btn-warning btn-md" (click)="previous()" [disabled]="form.pageNo == 0">
                 Previous
             </button>
         </div>
 
         <div class="col-md-4 text-center">
             <button (click)="forward('/user')" class="btn btn-primary btn-md mr-2">
-                Add User
+                new
             </button>
 
             <button (click)="deleteMany()" class="btn btn-danger btn-md">
@@ -176,9 +156,7 @@
         </div>
 
         <div class="col-md-4 text-right">
-            <button class="btn btn-warning btn-md"
-                    (click)="next()"
-                    [disabled]="form.nextListSize == 0">
+            <button class="btn btn-warning btn-md" (click)="next()" [disabled]="form.nextListSize == 0">
                 Next
             </button>
         </div>

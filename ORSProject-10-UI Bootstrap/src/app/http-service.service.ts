@@ -19,4 +19,22 @@ export class HttpServiceService {
       callback(data);
     });
   }
+
+getReport(url: string, token: string) {
+  this.httpClient.get(url, {
+    headers: {
+      Authorization: 'Bearer ' + token
+    },
+    responseType: 'blob' // important for PDF
+  })
+  .subscribe((res: any) => {
+
+    const file = new Blob([res], { type: 'application/pdf' });
+    const fileURL = URL.createObjectURL(file);
+
+    window.open(fileURL); // opens PDF in new tab
+  });
+}
+
+
 }

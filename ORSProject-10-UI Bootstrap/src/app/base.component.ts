@@ -96,8 +96,6 @@ export class BaseCtl implements OnInit {
                 // ✅ ID set (IMPORTANT)
                 _self.form.data.id = res.result.data;
 
-                console.log("Saved Successfully, ID:", _self.form.data.id);
-
                 // ✅ callback call (for image upload etc.)
                 if (callback) {
                     callback(_self.form.data.id);
