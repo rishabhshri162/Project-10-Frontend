@@ -90,10 +90,10 @@
                                 <i class="fa fa-envelope"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" name="emailId" [(ngModel)]="form.data.emailId"
+                        <input type="text" class="form-control" name="loginId" [(ngModel)]="form.data.loginId"
                             placeholder="Email Id">
                     </div>
-                  <div class="text-danger">{{form.inputerror.loginId}}</div>
+                    <div class="text-danger">{{form.inputerror.loginId}}</div>
 
                     <!-- MOBILE -->
                     <label><b>Mobile No *</b></label>
@@ -103,7 +103,7 @@
                                 <i class="fa fa-phone"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" name="mobileNo" [(ngModel)]="form.data.mobileNo"
+                        <input type="text" class="form-control" name="phone5" [(ngModel)]="form.data.phone"
                             maxlength="10" placeholder="Mobile No">
                     </div>
                     <div class="text-danger">{{form.inputerror.phone}}</div>
@@ -133,7 +133,7 @@
                             </span>
                         </div>
                         <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob"
-                            [ngModel]="form.data.dob | date:'yyyy-MM-dd'">
+                            [ngModel]="form.data.dob | date:'yyyy-MM-dd'" [max]="datepicker.max">
                     </div>
                     <div class="text-danger">{{form.inputerror.dob}}</div>
 

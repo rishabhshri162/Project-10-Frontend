@@ -40,5 +40,8 @@ export class ChangepasswordComponent {
   forward(page: any) {
     this.route.navigateByUrl(page);
   }
+   reset() {
+    location.reload();
+  }
 
 }
