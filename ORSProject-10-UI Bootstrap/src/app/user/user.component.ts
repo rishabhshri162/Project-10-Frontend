@@ -75,16 +75,4 @@ export class UserComponent extends BaseCtl {
       );
   }
 
-
-
-  datepicker: any = {};
-
-override ngOnInit() {
-  let today = new Date();
-  let maxYear = today.getFullYear() - 18;
-
-  this.datepicker = {
-    max: new Date(maxYear, 11, 31).toISOString().split('T')[0]
-  };
-}
 }

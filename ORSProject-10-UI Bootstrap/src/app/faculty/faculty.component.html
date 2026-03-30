@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <input type="date" class="form-control" name="dob" [(ngModel)]="form.data.dob"
-                            [ngModel]="form.data.dob | date:'yyyy-MM-dd'">
+                            [ngModel]="form.data.dob | date:'yyyy-MM-dd'"   [max]="datepicker.max">
                     </div>
                     <div class="text-danger">{{form.inputerror.dob}}</div>
 

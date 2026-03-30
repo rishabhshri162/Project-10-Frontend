@@ -60,7 +60,7 @@ export class LoginComponent {
         localStorage.setItem('fname', res.result.fname);
         localStorage.setItem('lname', res.result.lname);
         localStorage.setItem('userId', res.result.data.id);
-          localStorage.setItem('token', 'Bearer ' + res.result.token)
+        localStorage.setItem('token', 'Bearer ' + res.result.token)
 
         _self.router.navigateByUrl('dashboard');
       }

@@ -6,157 +6,176 @@ import { ActivatedRoute } from '@angular/router';
   template: '',
 })
 export class BaseCtl implements OnInit {
+  public form: any = {
+    error: false, //error
+    inputerror: {}, // form input error messages
+    message: null, //error or success message
+    data: { id: null }, //form data
+    searchParams: {}, //search form
+    preload: [], // preload data
+    list: [], // search list
+    pageNo: 0,
+    nextListSize: 0,
+  };
 
-    public form: any = {
-        error: false, //error 
-        inputerror: {}, // form input error messages
-        message: null, //error or success message
-        data: { id: null }, //form data
-        searchParams: {}, //search form
-        preload: [], // preload data
-        list: [], // search list 
-        pageNo: 0,
-        nextListSize: 0
+  public api: any = {
+    endpoint: '',
+    get: '',
+    save: '',
+    search: '',
+    deleteMany: '',
+    preload: '',
+  };
+
+  public datepicker: any = {};
+
+  initApi(ep: any) {
+    this.api.endpoint = ep;
+    this.api.get = ep + '/get';
+    this.api.save = ep + '/save';
+    this.api.search = ep + '/search';
+    this.api.deleteMany = ep + '/deleteMany';
+    this.api.preload = ep + '/preload';
+  }
+
+  constructor(
+    public endpoint: String,
+    public serviceLocator: ServiceLocatorService,
+    public route: ActivatedRoute,
+  ) {
+    var _self = this;
+    _self.initApi(endpoint);
+
+    serviceLocator.getPathVariable(route, function (params: any) {
+      _self.form.data.id = params['id'];
+    });
+  }
+
+  ngOnInit(): void {
+    this.preload();
+    if (this.form.data.id && this.form.data.id > 0) {
+      this.display();
+    }
+
+    let today = new Date();
+    let maxYear = today.getFullYear() - 18;
+
+    this.datepicker = {
+      max: new Date(maxYear, 11, 31).toISOString().split('T')[0],
     };
+  }
 
-    public api: any = {
-        endpoint: '',
-        get: '',
-        save: '',
-        search: '',
-        deleteMany: '',
-        preload: '',
-    }
+  preload() {
+    var _self = this;
+    this.serviceLocator.httpService.get(_self.api.preload, function (res: any) {
+      if (res.success) {
+        _self.form.preload = res.result;
+      } else {
+        _self.form.error = true;
+        _self.form.message = res.result.message;
+      }
+    });
+  }
 
-    initApi(ep: any) {
-        this.api.endpoint = ep;
-        this.api.get = ep + "/get";
-        this.api.save = ep + "/save";
-        this.api.search = ep + "/search";
-        this.api.deleteMany = ep + "/deleteMany";
-        this.api.preload = ep + "/preload";
-    }
-
-    constructor(public endpoint: String, public serviceLocator: ServiceLocatorService, public route: ActivatedRoute) {
-        var _self = this;
-        _self.initApi(endpoint);
-
-        serviceLocator.getPathVariable(route, function (params: any) {
-            _self.form.data.id = params["id"];
-        })
-    }
-
-    ngOnInit(): void {
-        this.preload();
-        if (this.form.data.id && this.form.data.id > 0) {
-            this.display();
+  display() {
+    var _self = this;
+    this.serviceLocator.httpService.get(
+      _self.api.get + '/' + _self.form.data.id,
+      function (res: any) {
+        if (res.success) {
+          _self.form.data = res.result.data;
+        } else {
+          _self.form.error = true;
+          _self.form.message = res.result.message;
         }
-    }
+      },
+    );
+  }
 
-    preload() {
-        var _self = this;
-        this.serviceLocator.httpService.get(_self.api.preload, function (res: any) {
-            if (res.success) {
-                _self.form.preload = res.result;
-            } else {
-                _self.form.error = true;
-                _self.form.message = res.result.message;
-            }
-        });
-    }
+  submit(callback?: (id: any) => void) {
+    var _self = this;
 
-    display() {
-        var _self = this;
-        this.serviceLocator.httpService.get(_self.api.get + "/" + _self.form.data.id, function (res: any) {
-            if (res.success) {
-                _self.form.data = res.result.data;
-            } else {
-                _self.form.error = true;
-                _self.form.message = res.result.message;
-            }
-        });
-    }
+    this.serviceLocator.httpService.post(
+      this.api.save,
+      this.form.data,
+      function (res: any) {
+        // reset
+        _self.form.message = '';
+        _self.form.inputerror = {};
+        _self.form.error = false;
 
-      submit(callback?: (id: any) => void) {
+        if (res.success) {
+          // ✅ success message
+          _self.form.message = res.result.message;
 
-        var _self = this;
+          // ✅ ID set (IMPORTANT)
+          _self.form.data.id = res.result.data;
 
-        this.serviceLocator.httpService.post(this.api.save, this.form.data, function (res: any) {
+          // ✅ callback call (for image upload etc.)
+          if (callback) {
+            callback(_self.form.data.id);
+          }
+        } else {
+          // ❌ validation error
+          _self.form.error = true;
 
-            // reset
-            _self.form.message = '';
-            _self.form.inputerror = {};
-            _self.form.error = false;
+          if (res.result.inputerror) {
+            _self.form.inputerror = res.result.inputerror;
+          }
 
-            if (res.success) {
+          _self.form.message = res.result.message;
 
-                // ✅ success message
-                _self.form.message = res.result.message;
+          console.log('Validation Error:', res.result);
+        }
+      },
+    );
+  }
+  search() {
+    var _self = this;
+    this.serviceLocator.httpService.post(
+      _self.api.search + '/' + _self.form.pageNo,
+      _self.form.searchParams,
+      function (res: any) {
+        _self.form.message = '';
+        _self.form.list = [];
+        if (res.success) {
+          _self.form.error = false;
+          _self.form.list = res.result.data;
+          _self.form.nextListSize = res.result.nextListSize;
+        } else {
+          _self.form.error = true;
+          _self.form.message = res.result.message;
+        }
+      },
+    );
+  }
 
-                // ✅ ID set (IMPORTANT)
-                _self.form.data.id = res.result.data;
+  deleteMany(id: any) {
+    var _self = this;
+    this.serviceLocator.httpService.post(
+      _self.api.deleteMany + '/' + id,
+      this.form.searchParams,
+      function (res: any) {
+        _self.form.message = '';
+        _self.form.list = [];
+        if (res.success) {
+          _self.form.error = false;
+          _self.form.message = res.result.message;
+          _self.form.list = res.result.data;
+          _self.form.nextListSize = res.result.nextListSize;
+        } else {
+          _self.form.error = true;
+          _self.form.message = res.result.message;
+        }
+      },
+    );
+  }
 
-                // ✅ callback call (for image upload etc.)
-                if (callback) {
-                    callback(_self.form.data.id);
-                }
+  forward(page: any) {
+    this.serviceLocator.forward(page);
+  }
 
-            } else {
-
-                // ❌ validation error
-                _self.form.error = true;
-
-                if (res.result.inputerror) {
-                    _self.form.inputerror = res.result.inputerror;
-                }
-
-                _self.form.message = res.result.message;
-
-                console.log("Validation Error:", res.result);
-
-            }
-
-        });
-
-    }
-    search() {
-        var _self = this;
-        this.serviceLocator.httpService.post(_self.api.search + "/" + _self.form.pageNo, _self.form.searchParams, function (res: any) {
-            _self.form.message = '';
-            _self.form.list = [];
-            if (res.success) {
-                _self.form.error = false;
-                _self.form.list = res.result.data;
-                _self.form.nextListSize = res.result.nextListSize;
-            } else {
-                _self.form.error = true;
-                _self.form.message = res.result.message;
-            }
-        });
-    }
-
-    deleteMany(id: any) {
-        var _self = this;
-        this.serviceLocator.httpService.post(_self.api.deleteMany + "/" + id, this.form.searchParams, function (res: any) {
-            _self.form.message = '';
-            _self.form.list = [];
-            if (res.success) {
-                _self.form.error = false;
-                _self.form.message = res.result.message;
-                _self.form.list = res.result.data;
-                _self.form.nextListSize = res.result.nextListSize;
-            } else {
-                _self.form.error = true;
-                _self.form.message = res.result.message;
-            }
-        });
-    }
-
-    forward(page: any) {
-        this.serviceLocator.forward(page);
-    }
-
-    reset() {
-        location.reload();
-    }
+  reset() {
+    location.reload();
+  }
 }
